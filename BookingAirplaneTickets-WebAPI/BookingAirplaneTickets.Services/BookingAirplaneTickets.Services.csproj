@@ -1,0 +1,13 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\BookingAirplaneTickets.DataAccess\BookingAirplaneTickets.DataAccess.csproj" />
+    <ProjectReference Include="..\BookingAirplaneTickets.DomainModels\BookingAirplaneTickets.DomainModels.csproj" />
+    <ProjectReference Include="..\BookingAirplaneTickets.Models\BookingAirplaneTickets.Models.csproj" />
+  </ItemGroup>
+
+</Project>
