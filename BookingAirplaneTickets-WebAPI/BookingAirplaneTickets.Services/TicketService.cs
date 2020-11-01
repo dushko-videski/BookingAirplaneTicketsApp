@@ -6,6 +6,7 @@ using BookingAirplaneTickets.Services.Exceptions;
 using BookingAirplaneTickets.Services.Interfaces;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace BookingAirplaneTickets.Services
 {
@@ -21,7 +22,7 @@ namespace BookingAirplaneTickets.Services
 
         public void AddTicket(TicketDto ticketDto)
         {
-            if ((int)ticketDto.AirLine == 1 && ticketDto.TrolleyBag == null)
+            if (ticketDto.AirLine == AirLines.AirLine_A && ticketDto.TrolleyBag == null)
             {
                 throw new TicketException("Trolley Bag field is required");
             }
@@ -47,7 +48,7 @@ namespace BookingAirplaneTickets.Services
                 };
                 _ticketRepository.Insert(ticket);
             }
-            if ((int)ticketDto.AirLine == 2)
+            if (ticketDto.AirLine == AirLines.AirLine_B)
             {
                 Ticket ticket = new Ticket()
                 {
@@ -71,10 +72,50 @@ namespace BookingAirplaneTickets.Services
         }
 
 
-        public IEnumerable<TicketDto> GetTickets(AirLines airline, int ticketId)
+        public IEnumerable<TicketDto> GetTickets(AirLines airline)
         {
-            throw new System.NotImplementedException();
+            if (airline == AirLines.AirLine_A)
+            {
+                return _ticketRepository.GetAll()
+                    .Where(t => t.AirLine == airline)
+                    .Select(t => new TicketDto()
+                    {
+                        Id = t.Id,
+                        AirLine = t.AirLine,
+                        FirstName = t.FirstName,
+                        LastName = t.LastName,
+                        DateOfBirth = t.DateOfBirth,
+                        PassportNo = t.PassportNo,
+                        Origin = t.Origin,
+                        Destination = t.Destination,
+                        Departure = t.Departure,
+                        Return = t.Return,
+                        FreeCarryOnBag = t.FreeCarryOnBag,
+                        TrolleyBag = t.TrolleyBag,
+                        CheckedInBag = t.CheckedInBag,
+                    });
+            }
+            return _ticketRepository.GetAll()
+                    .Where(t => t.AirLine == airline)
+                    .Select(t => new TicketDto()
+                    {
+                        Id = t.Id,
+                        AirLine = t.AirLine,
+                        FirstName = t.FirstName,
+                        LastName = t.LastName,
+                        DateOfBirth = t.DateOfBirth,
+                        PassportNo = t.PassportNo,
+                        LoyalMemberId = t.LoyalMemberId,
+                        UseLoyalMemberCredits = t.UseLoyalMemberCredits,
+                        Origin = t.Origin,
+                        Destination = t.Destination,
+                        Departure = t.Departure,
+                        Return = t.Return,
+                        FreeCarryOnBag = t.FreeCarryOnBag,
+                        CheckedInBag = t.CheckedInBag
+                    });
         }
+
 
         public void DeleteTicket(int ticketId)
         {

@@ -41,8 +41,8 @@ namespace BookingAirplaneTickets.Api.Controllers
             {
                 return BadRequest(ex.Message);
             }
-
         }
+
 
 
 

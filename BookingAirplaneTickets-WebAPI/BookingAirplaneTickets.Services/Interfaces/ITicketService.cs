@@ -8,7 +8,7 @@ namespace BookingAirplaneTickets.Services.Interfaces
     {
         void AddTicket(TicketDto ticketDto);
 
-        IEnumerable<TicketDto> GetTickets(AirLines airline, int ticketId);
+        IEnumerable<TicketDto> GetTickets(AirLines airline);
 
         void UpdateTicket(TicketDto ticketDto);
 

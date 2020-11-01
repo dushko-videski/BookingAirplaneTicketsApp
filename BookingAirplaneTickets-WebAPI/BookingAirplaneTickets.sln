@@ -3,15 +3,15 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30611.23
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BookingAirplaneTickets.DomainModels", "BookingAirplaneTickets.DomainModels\BookingAirplaneTickets.DomainModels.csproj", "{18CC49B7-AC86-4D2F-939F-0C726E3A31E9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BookingAirplaneTickets.DomainModels", "BookingAirplaneTickets.DomainModels\BookingAirplaneTickets.DomainModels.csproj", "{18CC49B7-AC86-4D2F-939F-0C726E3A31E9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BookingAirplaneTickets.DataAccess", "BookingAirplaneTickets.DataAccess\BookingAirplaneTickets.DataAccess.csproj", "{6D449F2C-494C-4F93-B720-B547DB928B77}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BookingAirplaneTickets.DataAccess", "BookingAirplaneTickets.DataAccess\BookingAirplaneTickets.DataAccess.csproj", "{6D449F2C-494C-4F93-B720-B547DB928B77}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BookingAirplaneTickets.Services", "BookingAirplaneTickets.Services\BookingAirplaneTickets.Services.csproj", "{7D136A6E-9B8F-4888-980C-3972A26A18B7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BookingAirplaneTickets.Services", "BookingAirplaneTickets.Services\BookingAirplaneTickets.Services.csproj", "{7D136A6E-9B8F-4888-980C-3972A26A18B7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BookingAirplaneTickets.Models", "BookingAirplaneTickets.Models\BookingAirplaneTickets.Models.csproj", "{253599D1-B298-4CB1-868F-1C1375A7379D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BookingAirplaneTickets.Models", "BookingAirplaneTickets.Models\BookingAirplaneTickets.Models.csproj", "{253599D1-B298-4CB1-868F-1C1375A7379D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BookingAirplaneTickets.Api", "BookingAirplaneTickets.Api\BookingAirplaneTickets.Api.csproj", "{DB9E9120-C4B5-404F-94E5-DBB10FBACAFE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BookingAirplaneTickets.Api", "BookingAirplaneTickets.Api\BookingAirplaneTickets.Api.csproj", "{DB9E9120-C4B5-404F-94E5-DBB10FBACAFE}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
