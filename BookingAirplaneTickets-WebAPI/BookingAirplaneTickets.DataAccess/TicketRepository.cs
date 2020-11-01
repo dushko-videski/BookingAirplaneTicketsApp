@@ -1,7 +1,5 @@
 ﻿using BookingAirplaneTickets.DomainModels;
-using BookingAirplaneTickets.DomainModels.Enums;
 using System.Collections.Generic;
-using System.Linq;
 
 namespace BookingAirplaneTickets.DataAccess
 {
@@ -16,9 +14,9 @@ namespace BookingAirplaneTickets.DataAccess
 
 
 
-        public IEnumerable<Ticket> GetAll(AirLines airline)
+        public IEnumerable<Ticket> GetAll()
         {
-            return _context.Tickets.Where(t => t.AirLine == airline);
+            return _context.Tickets;
         }
 
         public void Insert(Ticket entity)

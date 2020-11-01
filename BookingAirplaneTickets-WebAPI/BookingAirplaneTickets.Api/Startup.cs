@@ -1,4 +1,6 @@
-﻿using BookingAirplaneTickets.Services.Helpers;
+﻿using BookingAirplaneTickets.Services;
+using BookingAirplaneTickets.Services.Helpers;
+using BookingAirplaneTickets.Services.Interfaces;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
@@ -32,10 +34,11 @@ namespace BookingAirplaneTickets.Api
             // get the connection string
             var connectionString = Configuration.GetConnectionString("DefaultConnection");
 
-            // register DB CONTEXT 
+            // DB CONTEXT registration
             DiModule.RegisterModule(services, connectionString);
 
-
+            // service registration
+            services.AddTransient<ITicketService, TicketService>();
 
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);

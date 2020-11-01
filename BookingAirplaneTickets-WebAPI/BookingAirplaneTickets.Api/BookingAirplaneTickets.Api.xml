@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>BookingAirplaneTickets.Api</name>
+    </assembly>
+    <members>
+        <member name="M:BookingAirplaneTickets.Api.Controllers.TicketController.Add(BookingAirplaneTickets.Models.TicketDto)">
+            <summary>
+            adds new ticket
+            </summary>
+            <param name="ticketDto"></param>
+            <returns></returns>
+        </member>
+    </members>
+</doc>
