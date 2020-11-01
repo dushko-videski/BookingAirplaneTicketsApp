@@ -20,10 +20,19 @@ namespace BookingAirplaneTickets.Api
 
         public void ConfigureServices(IServiceCollection services)
         {
+            // CORS
+            services.AddCors(opt =>
+            {
+                opt.AddPolicy("CorsPolicy", builder => builder.AllowAnyOrigin()
+                    .AllowAnyMethod()
+                    .AllowAnyHeader()
+                    .AllowCredentials());
+            });
+
             // get the connection string
             var connectionString = Configuration.GetConnectionString("DefaultConnection");
 
-            // register DB CONTEXT (DataAccess dependencies)
+            // register DB CONTEXT 
             DiModule.RegisterModule(services, connectionString);
 
 
@@ -57,7 +66,8 @@ namespace BookingAirplaneTickets.Api
                 app.UseDeveloperExceptionPage();
             }
 
-            //SWAGER:
+            app.UseCors("CorsPolicy");
+
             app.UseOpenApi();
             app.UseSwaggerUi3();
 
