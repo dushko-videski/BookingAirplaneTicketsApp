@@ -1,4 +1,4 @@
-﻿using BookingAirplaneTickets.DomainModels.Enums;
+﻿using BookingAirplaneTickets.Shared.Enums;
 using Microsoft.EntityFrameworkCore;
 using System;
 

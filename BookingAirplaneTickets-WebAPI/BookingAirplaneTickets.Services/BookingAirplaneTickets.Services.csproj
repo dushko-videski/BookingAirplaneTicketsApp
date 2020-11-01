@@ -8,6 +8,7 @@
     <ProjectReference Include="..\BookingAirplaneTickets.DataAccess\BookingAirplaneTickets.DataAccess.csproj" />
     <ProjectReference Include="..\BookingAirplaneTickets.DomainModels\BookingAirplaneTickets.DomainModels.csproj" />
     <ProjectReference Include="..\BookingAirplaneTickets.Models\BookingAirplaneTickets.Models.csproj" />
+    <ProjectReference Include="..\BookingAirplaneTicketsShared\BookingAirplaneTickets.Shared.csproj" />
   </ItemGroup>
 
 </Project>

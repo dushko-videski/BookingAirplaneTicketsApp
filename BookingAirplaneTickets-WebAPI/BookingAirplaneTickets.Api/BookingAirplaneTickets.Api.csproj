@@ -21,6 +21,7 @@
   <ItemGroup>
     <ProjectReference Include="..\BookingAirplaneTickets.Models\BookingAirplaneTickets.Models.csproj" />
     <ProjectReference Include="..\BookingAirplaneTickets.Services\BookingAirplaneTickets.Services.csproj" />
+    <ProjectReference Include="..\BookingAirplaneTicketsShared\BookingAirplaneTickets.Shared.csproj" />
   </ItemGroup>
 
 </Project>

@@ -1,5 +1,5 @@
-﻿using BookingAirplaneTickets.DomainModels.Enums;
-using BookingAirplaneTickets.Models;
+﻿using BookingAirplaneTickets.Models;
+using BookingAirplaneTickets.Shared.Enums;
 using System.Collections.Generic;
 
 namespace BookingAirplaneTickets.Services.Interfaces

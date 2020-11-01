@@ -6,6 +6,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\BookingAirplaneTickets.DomainModels\BookingAirplaneTickets.DomainModels.csproj" />
+    <ProjectReference Include="..\BookingAirplaneTicketsShared\BookingAirplaneTickets.Shared.csproj" />
   </ItemGroup>
 
 </Project>

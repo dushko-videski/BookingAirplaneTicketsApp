@@ -1,4 +1,4 @@
-﻿namespace BookingAirplaneTickets.DomainModels.Enums
+﻿namespace BookingAirplaneTickets.Shared.Enums
 {
     public enum AirLines
     {
