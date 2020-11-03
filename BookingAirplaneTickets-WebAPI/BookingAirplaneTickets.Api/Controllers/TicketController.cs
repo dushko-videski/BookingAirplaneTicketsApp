@@ -47,14 +47,14 @@ namespace BookingAirplaneTickets.Api.Controllers
 
 
         /// <summary>
-        /// lists all tickets from chosen air line company
+        /// lists all tickets from chosen air line company or from both if no parametar is provided
         /// </summary>
         /// <param name="airline"></param>
         /// <returns></returns>
-        [HttpGet("tickets")]
+        [HttpGet("tickets/{airline?}")]
         [ProducesResponseType(typeof(IEnumerable<TicketDto>), StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
-        public ActionResult<IEnumerable<TicketDto>> GetAll([FromQuery] AirLines airline)
+        public ActionResult<IEnumerable<TicketDto>> GetAll(AirLines? airline)
         {
             try
             {
@@ -71,7 +71,33 @@ namespace BookingAirplaneTickets.Api.Controllers
         }
 
         /// <summary>
-        /// deletes ticket
+        /// gets ticekt by id
+        /// </summary>
+        /// <param name="ticketId"></param>
+        /// <returns></returns>
+        [HttpGet("ticket/{ticketId}")]
+        [ProducesResponseType(typeof(TicketDto), StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        public ActionResult<TicketDto> Get(int ticketId)
+        {
+            try
+            {
+                return Ok(_ticketService.GetTicket(ticketId));
+            }
+            catch (TicketException ex)
+            {
+                return BadRequest($"Ticket Exception:{ex.Message}");
+            }
+            catch (Exception ex)
+            {
+                return BadRequest($"Something went wrong:{ex.Message}");
+            }
+
+        }
+
+
+        /// <summary>
+        /// deletes ticket by id
         /// </summary>
         /// <param name="ticketId"></param>
         /// <returns></returns>
@@ -95,7 +121,7 @@ namespace BookingAirplaneTickets.Api.Controllers
             }
         }
         /// <summary>
-        /// updates ticket info
+        /// updates ticket's info
         /// </summary>
         /// <param name="ticketDto"></param>
         /// <returns></returns>

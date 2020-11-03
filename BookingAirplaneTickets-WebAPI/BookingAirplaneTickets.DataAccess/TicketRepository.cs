@@ -1,5 +1,6 @@
 ﻿using BookingAirplaneTickets.DomainModels;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace BookingAirplaneTickets.DataAccess
 {
@@ -17,6 +18,11 @@ namespace BookingAirplaneTickets.DataAccess
         public IEnumerable<Ticket> GetAll()
         {
             return _context.Tickets;
+        }
+
+        public Ticket GetById(int id)
+        {
+            return _context.Tickets.FirstOrDefault(t => t.Id == id);
         }
 
         public void Insert(Ticket entity)

@@ -8,6 +8,7 @@ namespace BookingAirplaneTickets.Models
     {
         public int Id { get; set; }
 
+
         [Required(ErrorMessage = "AirLine is required")]
         [Range(1, 2, ErrorMessage = "AirLine should be either 1 or 2")]
         public AirLines AirLine { get; set; }
@@ -24,6 +25,12 @@ namespace BookingAirplaneTickets.Models
         [Required(ErrorMessage = "Passport number is required")]
         public string PassportNo { get; set; }
 
+
+        public int LoyalMemberId { get; set; }
+
+        public bool UseLoyalMemberCredits { get; set; }
+
+
         [Required(ErrorMessage = "Origin is required")]
         public string Origin { get; set; }
 
@@ -38,14 +45,13 @@ namespace BookingAirplaneTickets.Models
         [Required(ErrorMessage = "Free Carry On Bag field is required")]
         public int FreeCarryOnBag { get; set; }
 
-        public int? TrolleyBag { get; set; }
+
+        public int TrolleyBag { get; set; }
+
 
         [Required(ErrorMessage = "Checked in bag field is required")]
         public int CheckedInBag { get; set; }
 
-        public int LoyalMemberId { get; set; }
-
-        public bool UseLoyalMemberCredits { get; set; }
 
     }
 }

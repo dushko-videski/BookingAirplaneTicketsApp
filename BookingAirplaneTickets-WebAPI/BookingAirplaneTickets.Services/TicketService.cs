@@ -21,6 +21,8 @@ namespace BookingAirplaneTickets.Services
         }
 
 
+
+
         public void AddTicket(TicketDto ticketDto)
         {
             if (ticketDto.AirLine == AirLines.AirLine_A && ticketDto.TrolleyBag == null)
@@ -28,31 +30,36 @@ namespace BookingAirplaneTickets.Services
                 throw new TicketException("Trolley Bag field is required");
             }
 
-
-            if (ticketDto.AirLine == AirLines.AirLine_A)
-            {
-                Ticket ticket = MapingTickets.MapTicketA(ticketDto);
-                _ticketRepository.Insert(ticket);
-            }
-            if (ticketDto.AirLine == AirLines.AirLine_B)
-            {
-                Ticket ticket = MapingTickets.MapTicketB(ticketDto);
-                _ticketRepository.Insert(ticket);
-            }
+            Ticket ticket = MapingTickets.MapTicket(ticketDto);
+            _ticketRepository.Insert(ticket);
         }
 
 
-        public IEnumerable<TicketDto> GetTickets(AirLines airline)
+        public IEnumerable<TicketDto> GetTickets(AirLines? airline)
         {
-            if (airline == AirLines.AirLine_A)
+            if (airline == null)
             {
                 return _ticketRepository.GetAll()
-                    .Where(t => t.AirLine == airline)
-                    .Select(t => MapingTickets.MapTicketDtoA(t));
+                .Select(t => MapingTickets.MapTicketDto(t));
             }
+
             return _ticketRepository.GetAll()
-                    .Where(t => t.AirLine == airline)
-                    .Select(t => MapingTickets.MapTicketDtoB(t));
+                .Where(t => t.AirLine == airline)
+                .Select(t => MapingTickets.MapTicketDto(t));
+        }
+
+
+        public TicketDto GetTicket(int ticketId)
+        {
+            Ticket ticket = _ticketRepository.GetById(ticketId);
+
+            if (ticket == null)
+            {
+                throw new TicketException($"Ticket with Id:{ticketId} does not exist!");
+            }
+
+            return MapingTickets.MapTicketDto(ticket);
+
         }
 
 
@@ -71,26 +78,15 @@ namespace BookingAirplaneTickets.Services
 
         public void UpdateTicket(TicketDto ticketDto)
         {
-            Ticket ticket = _ticketRepository.GetAll().FirstOrDefault(t => t.Id == ticketDto.Id);
+            Ticket ticket = _ticketRepository.GetById(ticketDto.Id);
 
             if (ticket == null)
             {
                 throw new TicketException($"Ticket with Id:{ticketDto.Id} does not exist!");
             }
 
-            if (ticketDto.AirLine == AirLines.AirLine_A)
-            {
-                MapingTickets.UpdateTicketA(ticketDto, ticket);
-
-                _ticketRepository.Update(ticket);
-            }
-
-            if (ticketDto.AirLine == AirLines.AirLine_B)
-            {
-                MapingTickets.UpdateTicketB(ticketDto, ticket);
-
-                _ticketRepository.Update(ticket);
-            }
+            MapingTickets.UpdateTicket(ticketDto, ticket);
+            _ticketRepository.Update(ticket);
 
         }
 

@@ -6,29 +6,8 @@ namespace BookingAirplaneTickets.Services.Helpers
 {
     public static class MapingTickets
     {
-        public static Ticket MapTicketA(TicketDto ticketDto)
-        {
-            return new Ticket()
-            {
-                Id = ticketDto.Id,
-                AirLine = ticketDto.AirLine,
-                FirstName = ticketDto.FirstName,
-                LastName = ticketDto.LastName,
-                DateOfBirth = ticketDto.DateOfBirth,
-                PassportNo = ticketDto.PassportNo,
-                Origin = ticketDto.Origin,
-                Destination = ticketDto.Destination,
-                Departure = ticketDto.Departure,
-                Return = ticketDto.Return,
-                FreeCarryOnBag = ticketDto.FreeCarryOnBag,
-                TrolleyBag = (int)ticketDto.TrolleyBag,
-                CheckedInBag = ticketDto.CheckedInBag,
-                CreatedOn = DateTime.UtcNow
 
-            };
-        }
-
-        public static Ticket MapTicketB(TicketDto ticketDto)
+        public static Ticket MapTicket(TicketDto ticketDto)
         {
             return new Ticket()
             {
@@ -45,32 +24,13 @@ namespace BookingAirplaneTickets.Services.Helpers
                 Departure = ticketDto.Departure,
                 Return = ticketDto.Return,
                 FreeCarryOnBag = ticketDto.FreeCarryOnBag,
+                TrolleyBag = ticketDto.TrolleyBag,
                 CheckedInBag = ticketDto.CheckedInBag,
                 CreatedOn = DateTime.UtcNow
             };
         }
 
-        public static TicketDto MapTicketDtoA(Ticket t)
-        {
-            return new TicketDto()
-            {
-                Id = t.Id,
-                AirLine = t.AirLine,
-                FirstName = t.FirstName,
-                LastName = t.LastName,
-                DateOfBirth = t.DateOfBirth,
-                PassportNo = t.PassportNo,
-                Origin = t.Origin,
-                Destination = t.Destination,
-                Departure = t.Departure,
-                Return = t.Return,
-                FreeCarryOnBag = t.FreeCarryOnBag,
-                TrolleyBag = t.TrolleyBag,
-                CheckedInBag = t.CheckedInBag,
-            };
-        }
-
-        public static TicketDto MapTicketDtoB(Ticket t)
+        public static TicketDto MapTicketDto(Ticket t)
         {
             return new TicketDto()
             {
@@ -87,31 +47,13 @@ namespace BookingAirplaneTickets.Services.Helpers
                 Departure = t.Departure,
                 Return = t.Return,
                 FreeCarryOnBag = t.FreeCarryOnBag,
+                TrolleyBag = t.TrolleyBag,
                 CheckedInBag = t.CheckedInBag
             };
         }
 
 
-        public static void UpdateTicketA(TicketDto ticketDto, Ticket ticket)
-        {
-            ticket.Id = ticketDto.Id;
-            ticket.AirLine = ticketDto.AirLine;
-            ticket.FirstName = ticketDto.FirstName;
-            ticket.LastName = ticketDto.LastName;
-            ticket.DateOfBirth = ticketDto.DateOfBirth;
-            ticket.PassportNo = ticketDto.PassportNo;
-            ticket.Origin = ticketDto.Origin;
-            ticket.Destination = ticketDto.Destination;
-            ticket.Departure = ticketDto.Departure;
-            ticket.Return = ticketDto.Return;
-            ticket.FreeCarryOnBag = ticketDto.FreeCarryOnBag;
-            ticket.TrolleyBag = (int)ticketDto.TrolleyBag;
-            ticket.CheckedInBag = ticketDto.CheckedInBag;
-            ticket.CreatedOn = DateTime.UtcNow;
-        }
-
-
-        public static void UpdateTicketB(TicketDto ticketDto, Ticket ticket)
+        public static void UpdateTicket(TicketDto ticketDto, Ticket ticket)
         {
             ticket.AirLine = ticketDto.AirLine;
             ticket.FirstName = ticketDto.FirstName;
@@ -125,6 +67,7 @@ namespace BookingAirplaneTickets.Services.Helpers
             ticket.Departure = ticketDto.Departure;
             ticket.Return = ticketDto.Return;
             ticket.FreeCarryOnBag = ticketDto.FreeCarryOnBag;
+            ticket.TrolleyBag = ticketDto.TrolleyBag;
             ticket.CheckedInBag = ticketDto.CheckedInBag;
             ticket.CreatedOn = DateTime.UtcNow;
         }

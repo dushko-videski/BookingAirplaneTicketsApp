@@ -11,23 +11,30 @@
             <param name="ticketDto"></param>
             <returns></returns>
         </member>
-        <member name="M:BookingAirplaneTickets.Api.Controllers.TicketController.GetAll(BookingAirplaneTickets.Shared.Enums.AirLines)">
+        <member name="M:BookingAirplaneTickets.Api.Controllers.TicketController.GetAll(System.Nullable{BookingAirplaneTickets.Shared.Enums.AirLines})">
             <summary>
-            lists all tickets from chosen air line company
+            lists all tickets from chosen air line company or from both if no parametar is provided
             </summary>
             <param name="airline"></param>
             <returns></returns>
         </member>
+        <member name="M:BookingAirplaneTickets.Api.Controllers.TicketController.Get(System.Int32)">
+            <summary>
+            gets ticekt by id
+            </summary>
+            <param name="ticketId"></param>
+            <returns></returns>
+        </member>
         <member name="M:BookingAirplaneTickets.Api.Controllers.TicketController.Delete(System.Int32)">
             <summary>
-            deletes ticket
+            deletes ticket by id
             </summary>
             <param name="ticketId"></param>
             <returns></returns>
         </member>
         <member name="M:BookingAirplaneTickets.Api.Controllers.TicketController.Update(BookingAirplaneTickets.Models.TicketDto)">
             <summary>
-            updates ticket info
+            updates ticket's info
             </summary>
             <param name="ticketDto"></param>
             <returns></returns>
