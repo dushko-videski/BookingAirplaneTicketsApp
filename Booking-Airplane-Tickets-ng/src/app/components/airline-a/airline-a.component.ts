@@ -1,6 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, TemplateRef } from '@angular/core';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
+import { AirLines, TicketDtoModel} from './../../models/ticket-model';
 import { AirlineAService } from './../../services/airline-a.service';
-import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-airline-a',
@@ -9,37 +11,92 @@ import { Router } from '@angular/router';
 })
 export class AirlineAComponent implements OnInit {
 
-  constructor(
-    private airlineAService: AirlineAService) { }
-  
+  modalRef: BsModalRef;
 
-  ngOnInit(): void {
-    this.addTicket()
- }
+  tickets: any;
+  
+  airlinesList= [AirLines.airLine_A, AirLines.airLine_B]
+
+  requestForm = new FormGroup({
+    airLine: new FormControl('', Validators.required), 
+    firstName: new FormControl('', Validators.required),
+    lastName: new FormControl('', Validators.required),
+    dateOfBirth: new FormControl('', Validators.required),
+    passportNo: new FormControl('', Validators.required),
+    origin: new FormControl('', Validators.required),
+    destination: new FormControl('', Validators.required),
+    departure: new FormControl('', Validators.required),
+    return: new FormControl('', Validators.required),
+    freeCarryOnBag: new FormControl('', Validators.required),
+    trolleyBag: new FormControl('', Validators.required),
+    checkedInBag: new FormControl('', Validators.required),
+  })
+
+  
+  constructor(private airlineAService: AirlineAService,
+    private modalService: BsModalService) { }
+  
+    ngOnInit(): void {
+    }
 
   addTicket(){
-  let requestModel = {
-      // AirLine : 2,
-      // FirstName : "from Ng",
-      // LastName : "from Ng",
-      // DateOfBirth : "1988, 01, 22",
-      // PassportNo : "B25645486",
-      // LoyalMemberId : 123,
-      // UseLoyalMemberCredits : true,
-      // Origin : "Nis",
-      // Destination : "Paris",
-      // Departure : "2020, 07, 1",
-      // Return : "2020, 05, 12",
-      // FreeCarryOnBag : 1,
-      // CheckedInBag : 2
+    let requestModel = new TicketDtoModel();
+  
+    requestModel.airLine = this.airlinesList[0]
+    requestModel.firstName = this.requestForm.value.firstName
+    requestModel.lastName = this.requestForm.value.lastName
+    requestModel.dateOfBirth = this.requestForm.value.dateOfBirth
+    requestModel.passportNo = this.requestForm.value.passportNo
+    requestModel.origin = this.requestForm.value.origin
+    requestModel.destination = this.requestForm.value.destination
+    requestModel.departure = this.requestForm.value.departure
+    requestModel.return = this.requestForm.value.return
+    requestModel.freeCarryOnBag = this.requestForm.value.freeCarryOnBag
+    requestModel.trolleyBag = this.requestForm.value.trolleyBag
+    requestModel.checkedInBag = this.requestForm.value.checkedInBag  
+  
+    this.airlineAService.addTicket(requestModel).subscribe({
+      error: err => console.warn(err.errors),
+      complete: () => {
+        this.closeModal()
+        this.getAllTickets()
       }
-      this.airlineAService.addTicket(requestModel).subscribe({
-        error: err => console.warn(err.error)
-      })
+    })
+  }
+ 
+
+ getAllTickets(){
+   this.airlineAService.getAllTickets().subscribe({
+     next: res => {
+       this.tickets = res
+     }
+   })
+ }
+
+ 
+ deleteTicket(ticketId: number){
+   this.airlineAService.deleteTicket(ticketId).subscribe({
+     error: err => console.warn(err.error),
+     complete: () => {
+       this.getAllTickets()
+     }
+   })
+ }
+
+ 
+  openModal(template: TemplateRef<any>) {
+    this.modalRef = this.modalService.show(template);
+  }
+  
+  closeModal() {
+    this.modalService._hideModal()
+    this.modalService._hideBackdrop()
+    this.requestForm.reset()
   }
 
-
-
+  resetForm(){
+    this.requestForm.reset()
+  }
 
 
 }

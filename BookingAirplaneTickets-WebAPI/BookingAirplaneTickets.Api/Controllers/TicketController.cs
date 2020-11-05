@@ -51,10 +51,10 @@ namespace BookingAirplaneTickets.Api.Controllers
         /// </summary>
         /// <param name="airline"></param>
         /// <returns></returns>
-        [HttpGet("tickets/{airline?}")]
+        [HttpGet("tickets")]
         [ProducesResponseType(typeof(IEnumerable<TicketDto>), StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
-        public ActionResult<IEnumerable<TicketDto>> GetAll(AirLines? airline)
+        public ActionResult<IEnumerable<TicketDto>> GetAll([FromQuery] AirLines? airline)
         {
             try
             {
@@ -75,10 +75,10 @@ namespace BookingAirplaneTickets.Api.Controllers
         /// </summary>
         /// <param name="ticketId"></param>
         /// <returns></returns>
-        [HttpGet("ticket/{ticketId}")]
+        [HttpGet("ticket")]
         [ProducesResponseType(typeof(TicketDto), StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
-        public ActionResult<TicketDto> Get(int ticketId)
+        public ActionResult<TicketDto> Get([FromQuery] int ticketId)
         {
             try
             {
@@ -101,10 +101,10 @@ namespace BookingAirplaneTickets.Api.Controllers
         /// </summary>
         /// <param name="ticketId"></param>
         /// <returns></returns>
-        [HttpDelete("ticket/delete/{ticketId}")]
+        [HttpDelete("ticket/delete")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
-        public ActionResult Delete(int ticketId)
+        public ActionResult Delete([FromQuery] int ticketId)
         {
             try
             {

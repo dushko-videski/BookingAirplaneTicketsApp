@@ -40,7 +40,9 @@ namespace BookingAirplaneTickets.Models
         [Required(ErrorMessage = "Departure date is required")]
         public DateTime Departure { get; set; }
 
+
         public DateTime Return { get; set; }
+
 
         [Required(ErrorMessage = "Free Carry On Bag field is required")]
         public int FreeCarryOnBag { get; set; }
