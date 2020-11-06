@@ -1,6 +1,6 @@
 export class TicketDtoModel {
-    
-    airLine: AirLines 
+
+    airLine: AirLines
     firstName: string
     lastName: string
     dateOfBirth: string
