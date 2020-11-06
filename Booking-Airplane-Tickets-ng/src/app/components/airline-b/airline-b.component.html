@@ -2,7 +2,178 @@
     <h1 class="display-5">Welcome to AirLine B</h1>
     <div class="row">
         <div class="col-md-6 text-center">
-            <button type="button" class="btn btn-info mb-2 w-50"><i class="fa fa-plus"></i>List all tickets</button>
+            <button class="btn btn-info mb-2 w-50" (click)="getAllTickets()">List all tickets</button>
         </div>
+        <div class="col-md-6 text-center">
+            <button type="button" class="btn btn-info mb-2 w-50" (click)="openModal(template)">Add ticket</button>
+        </div>
+
     </div>
+</div>
+
+
+<!-- modal -->
+<ng-template #template>
+    <div class="modal-header">
+        <h4 class="modal-title pull-left">Add Ticket</h4>
+        <button type="button" class="close pull-right" aria-label="Close" (click)="closeModal()">
+            <span aria-hidden="true">&times;</span>
+        </button>
+
+    </div>
+    <div class="modal-body">
+
+        <form [formGroup]="requestForm">
+
+            <div class="form-group">
+                <label for="firstName">Passanger Name</label>
+                <input type="text" class="form-control" formControlName="firstName" id="firstName">
+                <label class="text-danger"
+                    *ngIf="requestForm.get('firstName').touched && requestForm.get('firstName').errors?.required">This
+                    field is required!</label>
+            </div>
+
+            <div class="form-group">
+                <label for="lastName">Passanger lastname</label>
+                <input type="text" class="form-control" formControlName="lastName" id="lastName">
+                <label class="text-danger"
+                    *ngIf="requestForm.get('lastName').touched && requestForm.get('lastName').errors?.required">This
+                    field is required!</label>
+            </div>
+
+            <div class="form-group">
+                <label for="dateOfBirth">Date of birth</label>
+                <input type="date" class="form-control" formControlName="dateOfBirth" id="dateOfBirth">
+                <label class="text-danger"
+                    *ngIf="requestForm.get('dateOfBirth').touched && requestForm.get('dateOfBirth').errors?.required">This
+                    field is required!</label>
+            </div>
+
+            <div class="form-group">
+                <label for="passportNo">Passport No.</label>
+                <input type="text" class="form-control" formControlName="passportNo" id="passportNo">
+                <label class="text-danger"
+                    *ngIf="requestForm.get('passportNo').touched && requestForm.get('passportNo').errors?.required">This
+                    field is required!</label>
+            </div>
+
+            <div class="form-group">
+                <label for="loyalMemberId">Loyal Member Id</label>
+                <input type="number" class="form-control" formControlName="loyalMemberId" id="loyalMemberId">
+            </div>
+
+            <div class="form-group">
+                <label for="useLoyalMemberCredits">Use Loyal Member Credits</label>
+                <input type="checkbox" class="form-control" formControlName="useLoyalMemberCredits"
+                    id="useLoyalMemberCredits">
+            </div>
+
+            <div class="form-group">
+                <label for="origin">Origin</label>
+                <input type="text" class="form-control" formControlName="origin" id="origin">
+                <label class="text-danger"
+                    *ngIf="requestForm.get('origin').touched && requestForm.get('origin').errors?.required">This field
+                    is required!</label>
+            </div>
+
+            <div class="form-group">
+                <label for="destination">Destination</label>
+                <input type="text" class="form-control" formControlName="destination" id="destination">
+                <label class="text-danger"
+                    *ngIf="requestForm.get('destination').touched && requestForm.get('destination').errors?.required">This
+                    field is required!</label>
+            </div>
+
+            <div class="form-group">
+                <label for="departure">Departure</label>
+                <input type="date" class="form-control" formControlName="departure" id="departure">
+                <label class="text-danger"
+                    *ngIf="requestForm.get('departure').touched && requestForm.get('departure').errors?.required">This
+                    field is required!</label>
+            </div>
+
+            <div class="form-group">
+                <label for="return">Return</label>
+                <input type="date" class="form-control" formControlName="return" id="return">
+            </div>
+
+            <div class="form-group">
+                <label for="freeCarryOnBag">Free Carry-on Bag</label>
+                <input type="number" class="form-control" formControlName="freeCarryOnBag" id="freeCarryOnBag">
+                <label class="text-danger"
+                    *ngIf="requestForm.get('freeCarryOnBag').touched && requestForm.get('freeCarryOnBag').errors?.required">This
+                    field is required!</label>
+            </div>
+
+            <div class="form-group">
+                <label for="checkedInBag">Checked-in Bag</label>
+                <input type="number" class="form-control" formControlName="checkedInBag" id="checkedInBag">
+                <label class="text-danger"
+                    *ngIf="requestForm.get('checkedInBag').touched && requestForm.get('checkedInBag').errors?.required">This
+                    field is required!</label>
+            </div>
+
+            <div class="d-flex justify-content-center">
+                <button type="button" class="btn btn-success mt-2 mb-2" (click)="addTicket()">Book Now</button>
+            </div>
+            <div class="d-flex justify-content-center">
+                <button type="button" class="btn btn-info mt-2 mb-2" (click)="resetForm()">Reset</button>
+            </div>
+
+        </form>
+
+    </div>
+</ng-template>
+
+
+
+<!-- table -->
+<div class="card p-2 mb-2">
+    <table class="table table-striped">
+
+        <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Ticket Id</th>
+                <th scope="col">Passinger name</th>
+                <th scope="col">Passinger surname</th>
+                <th scope="col">Date of birth</th>
+                <th scope="col">Passport No.</th>
+                <th scope="col">Loyal Member Id</th>
+                <th scope="col">Use Loyal Member Credits</th>
+                <th scope="col">Origin</th>
+                <th scope="col">Destination</th>
+                <th scope="col">Departure</th>
+                <th scope="col">Return</th>
+                <th scope="col">Free carry-on bag</th>
+                <th scope="col">Checked-in bag</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            <tr *ngFor="let ticket of tickets; index as i">
+
+                <th scope="row">{{i + 1}}</th>
+                <td>{{ticket.id}}</td>
+                <td>{{ticket.firstName}}</td>
+                <td>{{ticket.lastName}}</td>
+                <td>{{ticket.dateOfBirth}}</td>
+                <td>{{ticket.passportNo}}</td>
+                <td>{{ticket.loyalMemberId}}</td>
+                <td>{{ticket.useLoyalMemberCredits | mapUseLoyalMemberCredits}}</td>
+                <td>{{ticket.origin}}</td>
+                <td>{{ticket.destination}}</td>
+                <td>{{ticket.departure}}</td>
+                <td>{{ticket.return}}</td>
+                <td>{{ticket.freeCarryOnBag}}</td>
+                <td>{{ticket.checkedInBag}}</td>
+                <td>
+                    <button class="btn btn-outline-warning mr-2">Edit</button>
+                    <button class="btn btn-outline-danger" (click)="deleteTicket(ticket.id)">Delete</button>
+                </td>
+
+            </tr>
+        </tbody>
+
+    </table>
 </div>

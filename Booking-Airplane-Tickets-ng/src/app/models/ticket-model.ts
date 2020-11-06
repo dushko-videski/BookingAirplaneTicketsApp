@@ -6,7 +6,7 @@ export class TicketDtoModel {
     dateOfBirth: string
     passportNo: string
     loyalMemberId: number
-    useLoyalMemberCredits: number
+    useLoyalMemberCredits: boolean
     origin: string
     destination: string
     departure: string

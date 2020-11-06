@@ -31,9 +31,5 @@ export class AirlineAService {
     let url = `${this.serverUrl}/ticket/delete?ticketId=${ticketId}`
     return this.http.delete(url)
   }
-
-
-
-
   
 }

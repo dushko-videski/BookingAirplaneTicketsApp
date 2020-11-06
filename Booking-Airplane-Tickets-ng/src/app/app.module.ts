@@ -15,6 +15,7 @@ import { AirlineBService } from './services/airline-b.service';
 
 import { ReactiveFormsModule } from '@angular/forms';
 import { ModalModule } from 'ngx-bootstrap/modal';
+import { MapUseLoyalMemberCreditsPipe } from './pipes/map-use-loyal-member-credits.pipe';
 
 
 @NgModule({
@@ -24,7 +25,8 @@ import { ModalModule } from 'ngx-bootstrap/modal';
     HeaderComponent,
     AirlineAComponent,
     AirlineBComponent,
-    FooterComponent
+    FooterComponent,
+    MapUseLoyalMemberCreditsPipe
   ],
   imports: [
     BrowserModule,
