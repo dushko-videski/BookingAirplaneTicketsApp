@@ -26,7 +26,7 @@
         <form [formGroup]="requestForm">
 
             <div class="form-group">
-                <label for="firstName">Passanger Name</label>
+                <label for="firstName">Passenger name</label>
                 <input type="text" class="form-control" formControlName="firstName" id="firstName">
                 <label class="text-danger"
                     *ngIf="requestForm.get('firstName').touched && requestForm.get('firstName').errors?.required">This
@@ -34,7 +34,7 @@
             </div>
 
             <div class="form-group">
-                <label for="lastName">Passanger lastname</label>
+                <label for="lastName">Passenger lastname</label>
                 <input type="text" class="form-control" formControlName="lastName" id="lastName">
                 <label class="text-danger"
                     *ngIf="requestForm.get('lastName').touched && requestForm.get('lastName').errors?.required">This
@@ -64,6 +64,7 @@
 
             <div class="form-group">
                 <label for="useLoyalMemberCredits">Use Loyal Member Credits</label>
+
                 <input type="checkbox" class="form-control" formControlName="useLoyalMemberCredits"
                     id="useLoyalMemberCredits">
             </div>
@@ -135,8 +136,8 @@
             <tr>
                 <th scope="col">#</th>
                 <th scope="col">Ticket Id</th>
-                <th scope="col">Passinger name</th>
-                <th scope="col">Passinger surname</th>
+                <th scope="col">Passenger name</th>
+                <th scope="col">Passenger lastname</th>
                 <th scope="col">Date of birth</th>
                 <th scope="col">Passport No.</th>
                 <th scope="col">Loyal Member Id</th>
